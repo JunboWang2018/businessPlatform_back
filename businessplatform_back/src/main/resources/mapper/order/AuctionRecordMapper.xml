@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.agriculture.platform.dao.order.AuctionRecordDao">
+    <sql id="Base_Col_List">
+            prod_number, price, user_id, create_time, is_active
+    </sql>
+
+    <resultMap id="Base_Col_ResultMap" type="com.agriculture.platform.pojo.base.Do.AuctionRecordDo">
+        <result property="auctionRecordId" column="auction_record_id"/>
+        <result property="prodNumber" column="prod_number"/>
+        <result property="price" column="price"/>
+        <result property="userId" column="user_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="isActive" column="is_active"/>
+    </resultMap>
+
+    <select id="selectAuctionRecordList" resultMap="Base_Col_ResultMap" parameterType="com.agriculture.platform.pojo.base.Do.AuctionRecordDo">
+        SELECT
+        auction_record_id, <include refid="Base_Col_List"/>
+        FROM T_AUCTION_RECORD
+        <where>
+            <if test="auctionRecordId != null">
+                auction_record_id = #{auctionRecordId}
+            </if>
+            <if test="prodNumber != null and prodNumber != ''">
+                AND prod_number = #{prodNumber}
+            </if>
+            <if test="price != null">
+                AND price = #{price}
+            </if>
+            <if test="userId != null">
+                AND user_id = #{userId}
+            </if>
+            <if test="createTime != null and createTime != ''">
+                AND  create_time = #{createTime}
+            </if>
+            <if test="isActive != null">
+                AND  is_active = #{isActive}
+            </if>
+        </where>
+    </select>
+
+    <insert id="addAuctionRecord" parameterType="com.agriculture.platform.pojo.base.Do.AuctionRecordDo">
+        INSERT INTO T_AUCTION_RECORD(<include refid="Base_Col_List"></include>) VALUES(#{prodNumber}, #{price}, #{userId}, CURRENT_TIMESTAMP, #{isActive})
+    </insert>
+</mapper>

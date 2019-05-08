@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.agriculture.platform.dao.product.ProductDao">
+    <sql id="Base_Col_List">
+            number, name, image_main, description, quantity, price, type_code, sale_way_code, user_id, create_time, modify_time, sell_status, is_active
+    </sql>
+
+    <resultMap id="Base_Col_ResultMap" type="com.agriculture.platform.pojo.base.Do.ProductDo">
+        <result property="productId" column="product_id"/>
+        <result property="number" column="number"/>
+        <result property="name" column="name"/>
+        <result property="imageMain" column="image_main"/>
+        <result property="description" column="description"/>
+        <result property="quantity" column="quantity"/>
+        <result property="price" column="price"/>
+        <result property="typeCode" column="type_code"/>
+        <result property="saleWayCode" column="sale_way_code"/>
+        <result property="userId" column="user_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="modifyTime" column="modify_time"/>
+        <result property="sellStatus" column="sell_status"/>
+        <result property="isActive" column="is_active"/>
+    </resultMap>
+
+    <select id="selectProdList" resultMap="Base_Col_ResultMap" parameterType="com.agriculture.platform.pojo.base.Do.ProductDo">
+        SELECT
+        product_id, <include refid="Base_Col_List"/>
+        FROM T_PRODUCT
+        <where>
+            <if test="productId != null">
+                product_id = #{productId}
+            </if>
+            <if test="number != null and number != ''">
+                AND number = #{number}
+            </if>
+            <if test="name != null and name != ''">
+                AND name LIKE "%"#{name}"%"
+            </if>
+            <if test="imageMain != null and imageMain != ''">
+                AND image_main = #{imageMain}
+            </if>
+            <if test="description != null and description != ''">
+                AND description = #{description}
+            </if>
+            <if test="quantity != null">
+                AND quantity = #{quantity}
+            </if>
+            <if test="price != null">
+                AND price = #{price}
+            </if>
+            <if test="typeCode != null and typeCode != ''">
+                AND type_code = #{typeCode}
+            </if>
+            <if test="saleWayCode != null and saleWayCode != ''">
+                AND sale_way_code = #{saleWayCode}
+            </if>
+            <if test="userId != null">
+                AND user_id = #{userId}
+            </if>
+            <if test="createTime != null and createTime != ''">
+                AND  create_time = #{createTime}
+            </if>
+            <if test="modifyTime != null and modifyTime != ''">
+                AND  modify_time = #{modifyTime}
+            </if>
+            <if test="sellStatus != null">
+                AND  sell_status = #{sellStatus}
+            </if>
+            <if test="isActive != null">
+                AND  is_active = #{isActive}
+            </if>
+        </where>
+    </select>
+
+    <insert id="addProduct" parameterType="com.agriculture.platform.pojo.base.Do.ProductDo">
+        INSERT INTO T_PRODUCT(<include refid="Base_Col_List"></include>)
+        VALUES(#{number}, #{name}, #{imageMain}, #{description}, #{quantity}, #{price}, #{typeCode}, #{saleWayCode}, #{userId}, CURRENT_TIMESTAMP, NULL, #{sellStatus}, #{isActive})
+    </insert>
+
+    <update id="updateProduct" parameterType="com.agriculture.platform.pojo.base.Do.ProductDo">
+        UPDATE T_PRODUCT
+        SET
+        number = #{number},
+        name = #{name},
+        image_main = #{imageMain},
+        description = #{description},
+        quantity = #{quantity},
+        price = #{price},
+        type_code = #{typeCode},
+        sale_way_code = #{saleWayCode},
+        user_id = #{userId},
+        create_time = #{createTime},
+        modify_time = #{modifyTime},
+        sell_status = #{sellStatus},
+        is_active = #{isActive}
+        WHERE product_id = #{productId}
+    </update>
+
+    <update id="deleteProduct" parameterType="java.lang.String">
+        UPDATE T_PRODUCT
+        SET
+        is_active = 0
+        WHERE number = #{number}
+    </update>
+
+</mapper>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.agriculture.platform.dao.order.OrderDao">
+    <sql id="Base_Col_List">
+            order_number, deal_time, prod_number, quantity, price, logistic_info_code, is_paid, user_id, create_time, modify_time, is_active
+    </sql>
+
+    <resultMap id="Base_Col_ResultMap" type="com.agriculture.platform.pojo.base.Do.OrderDo">
+        <result property="orderId" column="order_id"/>
+        <result property="orderNumber" column="order_number"/>
+        <result property="dealTime" column="deal_time"/>
+        <result property="prodNumber" column="prod_number"/>
+        <result property="quantity" column="quantity"/>
+        <result property="price" column="price"/>
+        <result property="logisticInfoCode" column="logistic_info_code"/>
+        <result property="isPaid" column="is_paid"/>
+        <result property="userId" column="user_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="modifyTime" column="modify_time"/>
+        <result property="isActive" column="is_active"/>
+    </resultMap>
+
+    <select id="selectOrderList" resultMap="Base_Col_ResultMap" parameterType="com.agriculture.platform.pojo.base.Do.OrderDo">
+        SELECT
+        order_id, <include refid="Base_Col_List"/>
+        FROM T_ORDER
+        <where>
+            <if test="orderId != null">
+                order_id = #{orderId}
+            </if>
+            <if test="orderNumber != null and orderNumber != ''">
+                AND order_number = #{orderNumber}
+            </if>
+            <if test="dealTime != null and dealTime != ''">
+                AND deal_time = #{dealTime}
+            </if>
+            <if test="prodNumber != null and prodNumber != ''">
+                AND prod_number = #{prodNumber}
+            </if>
+            <if test="quantity != null">
+                AND quantity = #{quantity}
+            </if>
+            <if test="price != null">
+                AND price = #{price}
+            </if>
+            <if test="logisticInfoCode != null and logisticInfoCode != ''">
+                AND logistic_info_code = #{logisticInfoCode}
+            </if>
+            <if test="isPaid != null">
+                AND is_paid = #{isPaid}
+            </if>
+            <if test="userId != null">
+                AND user_id = #{userId}
+            </if>
+            <if test="createTime != null and createTime != ''">
+                AND  create_time = #{createTime}
+            </if>
+            <if test="modifyTime != null and modifyTime != ''">
+                AND  modify_time = #{modifyTime}
+            </if>
+            <if test="isActive != null">
+                AND  is_active = #{isActive}
+            </if>
+        </where>
+    </select>
+
+    <insert id="addOrder" parameterType="com.agriculture.platform.pojo.base.Do.OrderDo">
+        INSERT INTO T_ORDER(<include refid="Base_Col_List"></include>) VALUES(#{orderNumber}, CURRENT_TIMESTAMP, #{prodNumber}, #{quantity}, #{price}, #{logisticInfoCode}, #{isPaid}, #{userId}, CURRENT_TIMESTAMP, NULL, #{isActive})
+    </insert>
+
+    <update id="updateOrder" parameterType="com.agriculture.platform.pojo.base.Do.OrderDo">
+        UPDATE T_ORDER
+        SET
+        order_number = #{orderNumber},
+        deal_time = #{dealTime},
+        prod_number = #{prodNumber},
+        quantity = #{quantity},
+        price = #{price},
+        logistic_info_code = #{logisticInfoCode},
+        is_paid = #{isPaid},
+        user_id = #{userId},
+        create_time = #{createTime},
+        modify_time = #{modifyTime},
+        is_active = #{isActive}
+        WHERE order_id = #{orderId}
+    </update>
+
+    <update id="deleteOrder" parameterType="com.agriculture.platform.pojo.base.Do.OrderDo">
+        UPDATE T_ORDER
+        SET
+        is_active = 0
+        WHERE order_number = #{orderNumber}
+    </update>
+
+    <update id="deleteUserAllOrder" parameterType="java.lang.Integer">
+        UPDATE T_ORDER
+        SET
+        is_active = 0
+        WHERE user_id = #{userId}
+    </update>
+
+    <update id="updateOrderPrice" parameterType="com.agriculture.platform.pojo.base.Do.OrderDo">
+        UPDATE T_ORDER
+        SET
+        price = #{price}
+        WHERE order_number = #{orderNumber}
+    </update>
+
+</mapper>
