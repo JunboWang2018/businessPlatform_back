@@ -2,6 +2,7 @@ package com.agriculture.platform.service.order;
 
 import com.agriculture.platform.common.constant.Result;
 import com.agriculture.platform.pojo.base.Do.OrderDo;
+import com.agriculture.platform.pojo.base.Do.ProductDo;
 import com.agriculture.platform.pojo.base.Do.UserDo;
 import com.agriculture.platform.pojo.base.Qo.OrderInfoQo;
 
@@ -9,6 +10,13 @@ import java.util.List;
 import java.util.Map;
 
 public interface OrderService {
+
+    /**
+     * 提交订单(除一键购买)
+     * @param productDo
+     * @return
+     */
+    void addOrder(ProductDo productDo);
 
     /**
      * 查找订单列表，并封装

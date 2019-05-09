@@ -2,14 +2,17 @@ package com.agriculture.platform.service.order.impl;
 
 import com.agriculture.platform.common.constant.Result;
 import com.agriculture.platform.dao.order.OrderDao;
+import com.agriculture.platform.dao.product.ProductDao;
 import com.agriculture.platform.pojo.base.Do.*;
 import com.agriculture.platform.pojo.base.Qo.EasyUIOrderDataQo;
 import com.agriculture.platform.pojo.base.Qo.OrderInfoQo;
+import com.agriculture.platform.service.order.AuctionRecordService;
 import com.agriculture.platform.service.order.OrderService;
 import com.agriculture.platform.service.product.ProdTypeService;
 import com.agriculture.platform.service.product.ProductService;
 import com.agriculture.platform.service.product.SaleWayService;
 import com.agriculture.platform.service.user.UserService;
+import com.agriculture.platform.utils.AutoGenerateNumberUtil;
 import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -37,6 +41,12 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private ProductService productService;
 
+    @Resource
+    private ProductDao productDao;
+
+    @Autowired
+    private AuctionRecordService auctionRecordService;
+
     @Autowired
     private UserService userService;
 
@@ -45,6 +55,46 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private SaleWayService saleWayService;
+
+    @Override
+    public void addOrder(ProductDo productDo) {
+        Integer result = null;
+        //查找竞拍记录表
+        AuctionRecordDo queryAuctionRecord = new AuctionRecordDo();
+        queryAuctionRecord.setProdNumber(productDo.getNumber());
+        List<AuctionRecordDo> auctionRecordDos = auctionRecordService.selectAuctionRecordList(queryAuctionRecord);
+        //若记录为空，则设置商品下架（流拍）
+        if (auctionRecordDos == null || auctionRecordDos.size() == 0) {
+            productDo.setSellStatus(-1);
+            productDo.setModifyTime(new Timestamp(System.currentTimeMillis()));
+            result = productDao.updateProduct(productDo);
+        } else {
+            //取出价最高的记录
+            AuctionRecordDo maxPriceRecord = auctionRecordDos.get(0);
+            for (int i = 0; i < auctionRecordDos.size(); i++) {
+                if (maxPriceRecord.getPrice().doubleValue() < auctionRecordDos.get(i).getPrice().doubleValue()) {
+                    maxPriceRecord = auctionRecordDos.get(i);
+                }
+            }
+            //生成订单(库存数量即为交易数量，物流信息暂空，支付后设置已下单)
+            OrderDo orderDo = new OrderDo();
+            orderDo.setIsActive(1);
+            String orderNumber = AutoGenerateNumberUtil.getAutoGenerateId("ORDER");
+            orderDo.setOrderNumber(orderNumber);
+            orderDo.setProdNumber(productDo.getNumber());
+            orderDo.setQuantity(productDo.getQuantity());
+            orderDo.setPrice(productDo.getQuantity().intValue() * maxPriceRecord.getPrice().doubleValue());
+            orderDo.setUserId(maxPriceRecord.getUserId());
+            orderDo.setIsPaid(0);
+            result = orderDao.addOrder(orderDo);
+            //生成成功设置已售出
+            if (result == 1) {
+                productDo.setSellStatus(0);
+                productDo.setModifyTime(new Timestamp(System.currentTimeMillis()));
+                productDao.updateProduct(productDo);
+            }
+        }
+    }
 
     @Override
     public List<OrderInfoQo> selectOrderInfoQoList(OrderDo orderDo) {
