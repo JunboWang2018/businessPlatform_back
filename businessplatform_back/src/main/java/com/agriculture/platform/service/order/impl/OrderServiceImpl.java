@@ -86,6 +86,7 @@ public class OrderServiceImpl implements OrderService {
             orderDo.setPrice(productDo.getQuantity().intValue() * maxPriceRecord.getPrice().doubleValue());
             orderDo.setUserId(maxPriceRecord.getUserId());
             orderDo.setIsPaid(0);
+            orderDo.setLogisticInfoCode("USHIP");
             result = orderDao.addOrder(orderDo);
             //生成成功设置已售出
             if (result == 1) {
