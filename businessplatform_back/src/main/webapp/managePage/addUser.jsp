@@ -27,7 +27,7 @@
 				</td>
 	        </tr>
 			<tr>
-				<td>密码:</td>
+				<td>收货地址:</td>
 				<td>
 					<input id="address" class="easyui-textbox" type="text" style="width: 280px;" />
 				</td>

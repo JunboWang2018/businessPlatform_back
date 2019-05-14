@@ -27,7 +27,7 @@ CREATE TABLE `T_AUCTION_INFO` (
   `create_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `modify_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`auction_info_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for T_AUCTION_RECORD
@@ -41,7 +41,7 @@ CREATE TABLE `T_AUCTION_RECORD` (
   `create_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `is_active` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`auction_record_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for T_CART
@@ -56,7 +56,7 @@ CREATE TABLE `T_CART` (
   `modify_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `is_active` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`cart_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for T_LOGISTIC_INFO
@@ -68,11 +68,13 @@ CREATE TABLE `T_LOGISTIC_INFO` (
   `name` varchar(20) NOT NULL DEFAULT '',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`logistic_info_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of T_LOGISTIC_INFO
 -- ----------------------------
+INSERT INTO `T_LOGISTIC_INFO` VALUES ('1', 'SHIP', '已发货', '2019-05-12 18:23:45');
+INSERT INTO `T_LOGISTIC_INFO` VALUES ('2', 'USHIP', '未发货', '2019-05-12 18:24:01');
 
 -- ----------------------------
 -- Table structure for T_ORDER
@@ -92,7 +94,7 @@ CREATE TABLE `T_ORDER` (
   `modify_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `is_active` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`order_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for T_PRODUCT
@@ -114,7 +116,7 @@ CREATE TABLE `T_PRODUCT` (
   `sell_status` int(11) NOT NULL DEFAULT '-1' COMMENT '-1 ：下架 0 : 已售出 1 ：上架',
   `is_active` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for T_PRODUCT_TYPE
@@ -173,3 +175,8 @@ CREATE TABLE `T_USER` (
   `is_active` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of T_USER
+-- ----------------------------
+INSERT INTO `T_USER` VALUES ('1', 'admin', '81dc9bdb52d04dc20036dbd8313ed055', 'superAdmin', '0', '0', '', '2019-05-05 00:40:11', '2019-05-05 01:20:14', '1');
