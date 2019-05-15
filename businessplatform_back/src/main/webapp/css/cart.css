@@ -71,7 +71,7 @@
 .cartOrderCount{margin-top:10px;border:1px solid #dadada;overflow:hidden;zoom:1;}
 .cartButtons{float:left;width:300px;padding:5px 0;}
 .cartTotalItem{float:right;width:500px;text-align:right;line-height:38px;padding:3px 10px 0 0;}
-.cartclear{background:url(/businessPlatform/images/cartbg.gif) no-repeat scroll 0 -105px;border:0;color:#6B6B6B;cursor:pointer;height:18px;line-height:18px;margin:10px;overflow:hidden;padding:0 0 0 15px;text-align:left;width:110px;}
+.cartclear{background:url(/businessPlatformManage/images/cartbg.gif) no-repeat scroll 0 -105px;border:0;color:#6B6B6B;cursor:pointer;height:18px;line-height:18px;margin:10px;overflow:hidden;padding:0 0 0 15px;text-align:left;width:110px;}
 .cartPrice{color:#EA5404;font-size:22px;}
 .cartAmount{margin:1px auto;width:55px;height:18px;overflow:hidden;zoom:1;}
 a.cartCountBtn,a.cartCountBtn:hover,input.amount{float: left;font-size: 12px;vertical-align:middle;padding:0px;font-family:Arial, Helvetica, sans-serif;border:1px solid #cacaca;overflow: hidden;text-align:center;}

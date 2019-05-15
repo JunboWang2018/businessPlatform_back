@@ -2071,7 +2071,7 @@ function oneKeyBuy(prodNumber) {
     arr.push(prodNumber);
     $.ajax({
         type : "post",
-        url : "/businessPlatform/data/order/addOrder",
+        url : "/businessPlatformManage/data/order/addOrder",
         dataType : "json",
         data : {
             "prodNumbers" : arr
@@ -2137,7 +2137,7 @@ function addAuctionRecord(prodNumber) {
     }
     $.ajax({
         type : "get",
-        url : "/businessPlatform/data/auctionRecord/addAuctionRecord",
+        url : "/businessPlatformManage/data/auctionRecord/addAuctionRecord",
         dataType : "json",
         data : {
             "prodNumber" : prodNumber,

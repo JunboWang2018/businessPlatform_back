@@ -4,14 +4,14 @@
 	<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>XX电商平台后台管理系统</title>
-	<link rel="stylesheet" type="text/css" href="/businessPlatform/js/jquery-easyui-1.4.1/themes/gray/easyui.css" />
-	<link rel="stylesheet" type="text/css" href="/businessPlatform/js/jquery-easyui-1.4.1/themes/icon.css" />
-	<link rel="stylesheet" type="text/css" href="/businessPlatform/css/e3.css" />
-	<link rel="stylesheet" type="text/css" href="/businessPlatform/css/default.css" />
-	<script type="text/javascript" src="/businessPlatform/js/jquery-easyui-1.4.1/jquery.min.js"></script>
-	<script type="text/javascript" src="/businessPlatform/js/jquery-easyui-1.4.1/jquery.easyui.min.js"></script>
-	<script type="text/javascript" src="/businessPlatform/js/jquery-easyui-1.4.1/locale/easyui-lang-zh_CN.js"></script>
-	<script type="text/javascript" src="/businessPlatform/js/common.js"></script>
+	<link rel="stylesheet" type="text/css" href="/businessPlatformManage/js/jquery-easyui-1.4.1/themes/gray/easyui.css" />
+	<link rel="stylesheet" type="text/css" href="/businessPlatformManage/js/jquery-easyui-1.4.1/themes/icon.css" />
+	<link rel="stylesheet" type="text/css" href="/businessPlatformManage/css/e3.css" />
+	<link rel="stylesheet" type="text/css" href="/businessPlatformManage/css/default.css" />
+	<script type="text/javascript" src="/businessPlatformManage/js/jquery-easyui-1.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/businessPlatformManage/js/jquery-easyui-1.4.1/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="/businessPlatformManage/js/jquery-easyui-1.4.1/locale/easyui-lang-zh_CN.js"></script>
+	<script type="text/javascript" src="/businessPlatformManage/js/common.js"></script>
 	<style type="text/css">
 		.content {
 			padding: 10px 10px 10px 10px;
@@ -22,30 +22,30 @@
 		<!-- 头部标题 -->
 		<div data-options="region:'north',border:false" style="height:60px; padding:5px; background:#F3F3F3">
 			<span class="northTitle">XX电商平台后台管理系统</span>
-			<span class="loginInfo">登录用户：${sessionScope.user.username}&nbsp;&nbsp;姓名：${sessionScope.user.username}&nbsp;&nbsp;<a href="/businessPlatform/data/manage/user/logout">退出</a></span>
+			<span class="loginInfo">登录用户：${sessionScope.user.username}&nbsp;&nbsp;姓名：${sessionScope.user.username}&nbsp;&nbsp;<a href="/businessPlatformManage/data/manage/user/logout">退出</a></span>
 		</div>
 		<div data-options="region:'west',title:'菜单',split:true" style="width:180px;">
 			<ul id="menu" class="easyui-tree" style="margin-top: 10px;margin-left: 5px;">
 				<li>
 					<span>商品管理</span>
 					<ul>
-						<li data-options="attributes:{'url':'/businessPlatform/view/manage/product/toReleaseProduct'}">新增商品</li>
-						<li data-options="attributes:{'url':'/businessPlatform/view/manage/product/toManageProduct'}">商品管理</li>
-						<%--<li data-options="attributes:{'url':'/businessPlatform/view/manage/product/toEditProduct'}">编辑商品</li>--%>
+						<li data-options="attributes:{'url':'/businessPlatformManage/view/manage/product/toReleaseProduct'}">新增商品</li>
+						<li data-options="attributes:{'url':'/businessPlatformManage/view/manage/product/toManageProduct'}">商品管理</li>
+						<%--<li data-options="attributes:{'url':'/businessPlatformManage/view/manage/product/toEditProduct'}">编辑商品</li>--%>
 					</ul>
 				</li>
 				<li>
 					<span>订单管理</span>
 					<ul>
-						<li data-options="attributes:{'url':'/businessPlatform/view/manage/order/toManageOrder'}">订单管理</li>
+						<li data-options="attributes:{'url':'/businessPlatformManage/view/manage/order/toManageOrder'}">订单管理</li>
 					<%--	<li data-options="attributes:{'url':'content'}">内容管理</li>--%>
 					</ul>
 				</li>
 				<li>
 					<span>用户管理</span>
 					<ul>
-						<li data-options="attributes:{'url':'/businessPlatform/view/manage/user/toAddUser'}">新增账号</li>
-						<li data-options="attributes:{'url':'/businessPlatform/view/manage/user/toManageUser'}">账号管理</li>
+						<li data-options="attributes:{'url':'/businessPlatformManage/view/manage/user/toAddUser'}">新增账号</li>
+						<li data-options="attributes:{'url':'/businessPlatformManage/view/manage/user/toManageUser'}">账号管理</li>
 					</ul>
 				</li>
 			 </ul>

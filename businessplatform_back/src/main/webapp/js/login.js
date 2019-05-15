@@ -15,11 +15,11 @@ var LOGIN = {
         return true;
     },
     doLogin:function() {
-        $.post("/businessPlatform/data/user/login", $("#formlogin").serialize(),function(data){
+        $.post("/businessPlatformManage/data/user/login", $("#formlogin").serialize(),function(data){
             console.log("登陆成功");
             if (data.code == 1001) {
                 jAlert('登录成功!',"提示", function(){
-                    location.href = "/businessPlatform/";
+                    location.href = "/businessPlatformManage/";
                 });
 
             } else {

@@ -13,7 +13,7 @@ function previewImage(inputObject, divPreviewId){
 function initProdType(id){
     $.ajax({
         type : "get",
-        url : "/businessPlatform/data/prodType/selectProdTypeList",
+        url : "/businessPlatformManage/data/prodType/selectProdTypeList",
         dataType : "json",
         success : function (result) {
             if (result.code == 1000) {
@@ -32,7 +32,7 @@ function initProdType(id){
 function initSaleWay(id){
     $.ajax({
         type : "get",
-        url : "/businessPlatform/data/saleWay/selectSaleWayList",
+        url : "/businessPlatformManage/data/saleWay/selectSaleWayList",
         dataType : "json",
         success : function (result) {
             if (result.code == 1000) {
@@ -123,12 +123,12 @@ var toolbar = [{
             onLoad :function(){
                 //回显数据
                 var params = {"prodNumber" : prodNumbers};
-                $.post("/businessPlatform/data/manage/product/selectProduct",params, function(result){
+                $.post("/businessPlatformManage/data/manage/product/selectProduct",params, function(result){
                     if (result.code == 1000) {
                         var data = result.data;
                         $("#editProdNumber").val(data.product.number);
                         $("#editName").val(data.product.name);
-                        $("#editImage").attr("src", "/businessPlatform/prodImage/" + data.product.imageMain);
+                        $("#editImage").attr("src", "/businessPlatformManage/prodImage/" + data.product.imageMain);
                         editProdEditor.html(data.product.description);
                         $("#editPrice").val(data.product.price);
                         $("#editQuantity").val(data.product.quantity);
@@ -159,7 +159,7 @@ var toolbar = [{
         $.messager.confirm('确认','确定删除ID为 '+prodNumbers+' 的商品吗？',function(r){
             if (r){
                 var params = {"prodNumbers":prodNumbers};
-                $.post("/businessPlatform/data/manage/product/deleteProduct",params, function(data){
+                $.post("/businessPlatformManage/data/manage/product/deleteProduct",params, function(data){
                     if(data.code == 1008){
                         $.messager.alert('提示','删除商品成功!',undefined,function(){
                             $("#productList").datagrid("reload");
@@ -185,7 +185,7 @@ var toolbar = [{
         $.messager.confirm('确认','确定下架ID为 '+prodNumbers+' 的商品吗？',function(r){
             if (r){
                 var params = {"prodNumbers":prodNumbers, "sellStatus":-1};
-                $.post("/businessPlatform/data/manage/product/takeDownOrUpProd",params, function(data){
+                $.post("/businessPlatformManage/data/manage/product/takeDownOrUpProd",params, function(data){
                     if(data.code == 1009){
                         $.messager.alert('提示','下架商品成功!',undefined,function(){
                             $("#productList").datagrid("reload");
@@ -211,7 +211,7 @@ var toolbar = [{
         $.messager.confirm('确认','确定上架ID为 '+prodNumbers+' 的商品吗？',function(r){
             if (r){
                 var params = {"prodNumbers":prodNumbers, "sellStatus":1};
-                $.post("/businessPlatform/data/manage/product/takeDownOrUpProd",params, function(data){
+                $.post("/businessPlatformManage/data/manage/product/takeDownOrUpProd",params, function(data){
                     if(data.code == 1009){
                         $.messager.alert('提示','上架商品成功!',undefined,function(){
                             $("#productList").datagrid("reload");
@@ -241,7 +241,7 @@ var toolbar = [{
             return ;
         }
         var param = {"prodNumber":prodNumbers};
-        $.post("/businessPlatform/data/manage/order/selectAuctionRecord",param, function(result){
+        $.post("/businessPlatformManage/data/manage/order/selectAuctionRecord",param, function(result){
             if(result.code == 1000){
                 $("#auctionRecordBody").html(initAuctionRecordTableHTML(result.data));
             }

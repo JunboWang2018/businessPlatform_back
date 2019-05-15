@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<link href="/businessPlatform/js/kindeditor-4.1.10/themes/default/default.css" type="text/css" rel="stylesheet">
-<script type="text/javascript" charset="utf-8" src="/businessPlatform/js/manageUser.js"></script>
+<link href="/businessPlatformManage/js/kindeditor-4.1.10/themes/default/default.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" charset="utf-8" src="/businessPlatformManage/js/manageUser.js"></script>
 <div style="padding:10px 10px 10px 10px">
 	<form id="userEditForm" class="itemForm" method="post">
 		<input type="hidden" name="id"/>
@@ -67,7 +67,7 @@
         formData.append("address", $("#editAddress").val());
         $.ajax({
             type : "post",
-            url : "/businessPlatform/data/manage/user/updateUser",
+            url : "/businessPlatformManage/data/manage/user/updateUser",
             catch: false,
             processData: false,
             contentType: false,
@@ -88,7 +88,7 @@
     //密码重置
     function resetPWD() {
         var params = {"userId":$("#editUserId").val()};
-        $.post("/businessPlatform/data/manage/user/resetPWD", params, function(result){
+        $.post("/businessPlatformManage/data/manage/user/resetPWD", params, function(result){
             if (result.code == 1000) {
                 var str = "密码重置成功，新密码是 " + result.message + "，请牢记！";
                 $.messager.alert('提示', str, undefined,function(){

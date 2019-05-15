@@ -199,7 +199,7 @@ function cartAdd(prodNumber){
     }
     $.ajax({
         type : "get",
-        url : "/businessPlatform/data/cart/addCart",
+        url : "/businessPlatformManage/data/cart/addCart",
         dataType : "json",
         data : {
             "prodNumber" : prodNumber,
@@ -225,7 +225,7 @@ function cartAdd(prodNumber){
 function cartIndex(prodNumber, num){
     $.ajax({
         type : "get",
-        url : "/businessPlatform/data/cart/addCart",
+        url : "/businessPlatformManage/data/cart/addCart",
         dataType : "json",
         data : {
             "prodNumber" : prodNumber,
@@ -288,7 +288,7 @@ function generOrder() {
     }
     $.ajax({
         type : "post",
-        url : "/businessPlatform/data/order/addOrder",
+        url : "/businessPlatformManage/data/order/addOrder",
         dataType : "json",
         data : {
             "prodNumbers" : arr

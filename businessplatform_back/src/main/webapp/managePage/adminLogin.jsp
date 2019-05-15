@@ -4,13 +4,13 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>管理员登录</title>
-		<link rel="stylesheet" type="text/css" href="/businessPlatform/js/jquery-easyui-1.4.1/themes/gray/easyui.css" />
-		<link rel="stylesheet" type="text/css" href="/businessPlatform/js/jquery-easyui-1.4.1/themes/icon.css" />
-		<link rel="stylesheet" type="text/css" href="/businessPlatform/css/e3.css" />
-		<link rel="stylesheet" type="text/css" href="/businessPlatform/css/default.css" />
-		<script type="text/javascript" src="/businessPlatform/js/jquery-easyui-1.4.1/jquery.min.js"></script>
-		<script type="text/javascript" src="/businessPlatform/js/jquery-easyui-1.4.1/jquery.easyui.min.js"></script>
-		<script type="text/javascript" src="/businessPlatform/js/jquery-easyui-1.4.1/locale/easyui-lang-zh_CN.js"></script>
+		<link rel="stylesheet" type="text/css" href="/businessPlatformManage/js/jquery-easyui-1.4.1/themes/gray/easyui.css" />
+		<link rel="stylesheet" type="text/css" href="/businessPlatformManage/js/jquery-easyui-1.4.1/themes/icon.css" />
+		<link rel="stylesheet" type="text/css" href="/businessPlatformManage/css/e3.css" />
+		<link rel="stylesheet" type="text/css" href="/businessPlatformManage/css/default.css" />
+		<script type="text/javascript" src="/businessPlatformManage/js/jquery-easyui-1.4.1/jquery.min.js"></script>
+		<script type="text/javascript" src="/businessPlatformManage/js/jquery-easyui-1.4.1/jquery.easyui.min.js"></script>
+		<script type="text/javascript" src="/businessPlatformManage/js/jquery-easyui-1.4.1/locale/easyui-lang-zh_CN.js"></script>
 	</head>
 	<body style="background-color: #F3F3F3">
 		<div class="easyui-dialog" title="管理员登录" data-options="closable:false,draggable:false" style="width:400px;height:300px;padding:10px;">
@@ -34,11 +34,11 @@
 		<script type="text/javascript">
 			$("#login").click(function(){
 				var params = {"username":$("[name=username]").val(), "password":$("[name=password]").val()};
-				$.post("/businessPlatform/data/manage/user/login",params, function(data){
+				$.post("/businessPlatformManage/data/manage/user/login",params, function(data){
 					if(data.code == 1001){
 						$.messager.alert('提示','登录成功!', undefined,function(){
 							$("#userList").datagrid("reload");
-                            window.location.href="/businessPlatform/manage/";
+                            window.location.href="/businessPlatformManage/manage/";
 						});
 					} else {
 						$.messager.alert('提示',data.message, undefined,function(){

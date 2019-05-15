@@ -3206,7 +3206,7 @@ function deleteAllOrder() {
     }
     $.ajax({
         type : "post",
-        url : "/businessPlatform/data/order/deleteOrder",
+        url : "/businessPlatformManage/data/order/deleteOrder",
         dataType : "json",
         success : function (result) {
             if (result.code == 1000) {
@@ -3228,7 +3228,7 @@ function deleteOrder(orderNumber) {
     }
     $.ajax({
         type : "post",
-        url : "/businessPlatform/data/order/deleteOrder",
+        url : "/businessPlatformManage/data/order/deleteOrder",
         dataType : "json",
         data : {
             "orderNumber" : orderNumber

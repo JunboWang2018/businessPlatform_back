@@ -34,7 +34,7 @@ var toolbar = [{
             onLoad :function(){
                 //回显数据
                 var params = {"userId" : userIds};
-                $.post("/businessPlatform/data/manage/user/selectUser",params, function(result){
+                $.post("/businessPlatformManage/data/manage/user/selectUser",params, function(result){
                     if (result.code == 1000) {
                         var data = result.data;
                         $("#editUserId").val(data.userId);
@@ -61,7 +61,7 @@ var toolbar = [{
         $.messager.confirm('确认','确定删除ID为 '+userIds+' 的用户吗？',function(r){
             if (r){
                 var params = {"userIds":userIds};
-                $.post("/businessPlatform/data/manage/user/deleteUser",params, function(data){
+                $.post("/businessPlatformManage/data/manage/user/deleteUser",params, function(data){
                     if(data.code == 1013){
                         $.messager.alert('提示','删除用户成功!',undefined,function(){
                             $("#userList").datagrid("reload");

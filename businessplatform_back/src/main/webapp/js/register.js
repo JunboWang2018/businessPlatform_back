@@ -19,10 +19,10 @@ var REGISTER={
         return flag;
     },
     doSubmit:function() {
-        $.post("/businessPlatform/data/user/register", $("#regForm_mod").serialize(), function(data){
+        $.post("/businessPlatformManage/data/user/register", $("#regForm_mod").serialize(), function(data){
             if(data.code == 1002){
                 jAlert('用户注册成功!',"提示", function(){
-                    location.href = "/businessPlatform/";
+                    location.href = "/businessPlatformManage/";
                 });
             } else {
                 jAlert("注册失败，原因是：" + data.message, "失败");
@@ -30,7 +30,7 @@ var REGISTER={
         });
     },
     login:function() {
-        location.href = "/businessPlatform/";
+        location.href = "/businessPlatformManage/";
         return false;
     },
     reg:function() {

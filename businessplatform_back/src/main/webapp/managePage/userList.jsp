@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<link href="/businessPlatform/js/kindeditor-4.1.10/themes/default/default.css" type="text/css" rel="stylesheet">
-<script type="text/javascript" charset="utf-8" src="/businessPlatform/js/manageUser.js"></script>
+<link href="/businessPlatformManage/js/kindeditor-4.1.10/themes/default/default.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" charset="utf-8" src="/businessPlatformManage/js/manageUser.js"></script>
 <table class="easyui-datagrid" id="userList" title="用户列表"
-       data-options="singleSelect:false,collapsible:true,pagination:true,url:'/businessPlatform/data/manage/user/selectUserList',method:'get',pageSize:30,toolbar:toolbar">
+       data-options="singleSelect:false,collapsible:true,pagination:true,url:'/businessPlatformManage/data/manage/user/selectUserList',method:'get',pageSize:30,toolbar:toolbar">
     <thead>
         <tr>
         	<th data-options="field:'ck',checkbox:true"></th>
@@ -18,5 +18,5 @@
         </tr>
     </thead>
 </table>
-<div id="userEditWindow" class="easyui-window" title="编辑用户" data-options="modal:true,closed:true,iconCls:'icon-save',href:'/businessPlatform/view/manage/user/toEditUser'" style="width:80%;height:80%;padding:10px;">
+<div id="userEditWindow" class="easyui-window" title="编辑用户" data-options="modal:true,closed:true,iconCls:'icon-save',href:'/businessPlatformManage/view/manage/user/toEditUser'" style="width:80%;height:80%;padding:10px;">
 </div>

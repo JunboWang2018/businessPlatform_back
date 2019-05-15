@@ -64,7 +64,7 @@
             
                 </div>
                 <a name="sfbest_Uhead_Uhead_menu_category1-banner" class="trackref" href="http://www.e3mall.cn/fresh/321-0-0-0-0-2-0-0-0-1010-4862.html" target="_blank">
-                    <div class="i-img"><img src="/businessPlatform/images/html/1463455028.jpg"></div>
+                    <div class="i-img"><img src="/businessPlatformManage/images/html/1463455028.jpg"></div>
                 </a>
            </div>
             <div class="i-right"> <span onclick="$('.item').removeClass('hover')" class="i-close"></span> </div>

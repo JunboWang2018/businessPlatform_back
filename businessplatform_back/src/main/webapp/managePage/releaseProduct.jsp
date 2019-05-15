@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<link href="/businessPlatform/js/kindeditor-4.1.10/themes/default/default.css" type="text/css" rel="stylesheet">
-<script type="text/javascript" charset="utf-8" src="/businessPlatform/js/kindeditor-4.1.10/kindeditor-all-min.js"></script>
-<script type="text/javascript" charset="utf-8" src="/businessPlatform/js/kindeditor-4.1.10/lang/zh_CN.js"></script>
-<script type="text/javascript" charset="utf-8" src="/businessPlatform/js/manageProd.js"></script>
+<link href="/businessPlatformManage/js/kindeditor-4.1.10/themes/default/default.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" charset="utf-8" src="/businessPlatformManage/js/kindeditor-4.1.10/kindeditor-all-min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/businessPlatformManage/js/kindeditor-4.1.10/lang/zh_CN.js"></script>
+<script type="text/javascript" charset="utf-8" src="/businessPlatformManage/js/manageProd.js"></script>
 <div style="padding:10px 10px 10px 10px">
 	<form id="releaseProdForm" class="itemForm" method="post">
 	    <table cellpadding="5">
@@ -117,7 +117,7 @@
         formData.append("addPrice", addPrice);
         $.ajax({
             type : "post",
-            url : "/businessPlatform/data/manage/product/releaseProduct",
+            url : "/businessPlatformManage/data/manage/product/releaseProduct",
             catch: false,
             processData: false,
             contentType: false,

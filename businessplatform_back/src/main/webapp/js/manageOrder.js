@@ -29,7 +29,7 @@ var toolbar = [{
             onLoad :function(){
                 //回显数据
                 var params = {"orderNumber" : orderNumber};
-                $.post("/businessPlatform/data/manage/order/selectOrder", params, function(result){
+                $.post("/businessPlatformManage/data/manage/order/selectOrder", params, function(result){
                     if (result.code == 1000) {
                         var data = result.data;
                         $("#editOrderNumber").val(data.order.orderNumber);

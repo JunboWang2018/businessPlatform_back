@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<link href="/businessPlatform/js/kindeditor-4.1.10/themes/default/default.css" type="text/css" rel="stylesheet">
-<script type="text/javascript" charset="utf-8" src="/businessPlatform/js/kindeditor-4.1.10/kindeditor-all-min.js"></script>
-<script type="text/javascript" charset="utf-8" src="/businessPlatform/js/kindeditor-4.1.10/lang/zh_CN.js"></script>
-<script type="text/javascript" charset="utf-8" src="/businessPlatform/js/manageOrder.js"></script>
+<link href="/businessPlatformManage/js/kindeditor-4.1.10/themes/default/default.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" charset="utf-8" src="/businessPlatformManage/js/kindeditor-4.1.10/kindeditor-all-min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/businessPlatformManage/js/kindeditor-4.1.10/lang/zh_CN.js"></script>
+<script type="text/javascript" charset="utf-8" src="/businessPlatformManage/js/manageOrder.js"></script>
 <table class="easyui-datagrid" id="orderList" title="订单列表"
-       data-options="singleSelect:false,collapsible:true,pagination:true,url:'/businessPlatform/data/manage/order/selectOrderList',method:'get',pageSize:30,toolbar:toolbar">
+       data-options="singleSelect:false,collapsible:true,pagination:true,url:'/businessPlatformManage/data/manage/order/selectOrderList',method:'get',pageSize:30,toolbar:toolbar">
     <thead>
         <tr>
         	<th data-options="field:'ck',checkbox:true"></th>
@@ -23,5 +23,5 @@
         </tr>
     </thead>
 </table>
-<div id="orderPriceEditWindow" class="easyui-window" title="改价" data-options="modal:true,closed:true,iconCls:'icon-save',href:'/businessPlatform/view/manage/order/toEditOrderPriceWindow'" style="width:25%;height:25%;padding:10px;">
+<div id="orderPriceEditWindow" class="easyui-window" title="改价" data-options="modal:true,closed:true,iconCls:'icon-save',href:'/businessPlatformManage/view/manage/order/toEditOrderPriceWindow'" style="width:25%;height:25%;padding:10px;">
 </div>

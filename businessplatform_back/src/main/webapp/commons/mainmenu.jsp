@@ -16,10 +16,10 @@
     <!----menufloat------->
     <div class="menu1">
 		<ul>
-			<li><a name="sfbest_Uhead_Uhead_nav_nav1" class="trackref" href="/businessPlatform/">首页</a></li>
+			<li><a name="sfbest_Uhead_Uhead_nav_nav1" class="trackref" href="/businessPlatformManage/">首页</a></li>
 			<c:forEach items="${prodTypeList}" var="prodType">
 				<li id="${prodType.code}">
-					<a name="sfbest_hp_hp_nav_nav3" class="trackref" href="/businessPlatform/data/product/selectProdList?typeCode=${prodType.code}">${prodType.name}</a>
+					<a name="sfbest_hp_hp_nav_nav3" class="trackref" href="/businessPlatformManage/data/product/selectProdList?typeCode=${prodType.code}">${prodType.name}</a>
 				</li>
 			</c:forEach>
      	 </ul>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<link href="/businessPlatform/js/kindeditor-4.1.10/themes/default/default.css" type="text/css" rel="stylesheet">
-<script type="text/javascript" charset="utf-8" src="/businessPlatform/js/manageUser.js"></script>
+<link href="/businessPlatformManage/js/kindeditor-4.1.10/themes/default/default.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" charset="utf-8" src="/businessPlatformManage/js/manageUser.js"></script>
 <div style="padding:10px 10px 10px 10px">
 	<form id="releaseProdForm" class="itemForm" method="post">
 	    <table cellpadding="5">
@@ -51,7 +51,7 @@
         formData.append("address", $("#address").val());
         $.ajax({
             type : "post",
-            url : "/businessPlatform/data/manage/user/addUser",
+            url : "/businessPlatformManage/data/manage/user/addUser",
             catch: false,
             processData: false,
             contentType: false,
